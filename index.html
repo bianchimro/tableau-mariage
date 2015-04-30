@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<link href='http://fonts.googleapis.com/css?family=Bilbo+Swash+Caps|Mr+De+Haviland|Amatic+SC|Cinzel|Cinzel+Decorative' rel='stylesheet' type='text/css'>
+
+<style>
+    body{
+        text-align: center;
+    }
+    .tavolo{
+        font-family: 'Cinzel Decorative';
+        text-align: center;
+        font-size:34px;
+        margin-top: 2px;
+    }
+
+    .invitati{
+        text-align: center;
+        font-family: 'Amatic SC';
+        font-family: 'Cinzel Decorative';
+        font-size:15px;
+
+    }
+    .supertitle{
+        font-family: 'Cinzel';
+        text-align: center;
+        font-size:14px;   
+        margin-bottom: 2px;
+    }
+    
+
+    .flipped {
+        -moz-transform: scaleY(-1);
+        -o-transform: scaleY(-1);
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
+        
+    }
+
+    .greca{
+        z-index:100;
+        margin-top:-45px;
+    }
+
+    .desaturate { -webkit-filter: grayscale(100%); filter: grayscale(100%);  
+        margin: 0 auto;
+        z-index:1000;
+        
+    }
+
+    .foglia{
+        position: relative;
+        top:0px;
+    }
+
+    .tavolo-nomi{
+        margin-bottom:130px;
+    }
+
+    .tavolo-solo{
+        margin-bottom:10px;
+    }
+
+    .break{
+        page-break-after: always;
+    }
+
+
+
+    
+
+</style>
+
+
+</head>
+
+
+
+<body ng-app="matrimonio" ng-controller="MainCtrl">
+    <div ng-repeat="tavolo in tavoli track by $index">
+    <div class="tavolo-nomi">
+        <div style="text-align:center; position:relative">
+            
+            <img class="desaturate foglia" ng-src="{{tavolo.img}}" alt="hr-line" height="75">
+            <div class="greca">
+                <img src="immagini/flo.gif" alt="">
+            </div>
+        </div>
+        <p class="supertitle">tavolo</p>
+        <!--<h2 class="tavolo"><span class="bigger">S</span>tracciatella</h2>-->
+        <h2 class="tavolo">{{tavolo.nome}}</h2>
+        <p class="invitati">
+            <p ng-repeat="invitato in tavolo.invitati track by $index" class="invitati">
+                {{invitato}}
+            </p>
+        </p>
+    
+    </div>
+
+    <div class="tavolo-solo">
+        <div style="text-align:center; position:relative">
+            
+            <img class="desaturate foglia" ng-src="{{tavolo.img}}" alt="hr-line" height="75">
+            <div class="greca">
+                <img src="immagini/flo.gif" alt="">
+            </div>
+        </div>
+        <p class="supertitle">tavolo</p>
+        <!--<h2 class="tavolo"><span class="bigger">S</span>tracciatella</h2>-->
+        <h2 class="tavolo">{{tavolo.nome}}</h2>
+
+        
+        
+    </div>
+    <div class="break"></div>
+
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
+    <script src="tavoli.js"></script>
+    <script>
+
+    angular.module('matrimonio', [])
+    .config(function(){})
+    .run(function(){})
+    .controller('MainCtrl', ['$scope', function ($scope) {
+
+        $scope.tavoli=tavoli;
+        
+    }])
+
+
+
+
+    /*
+    var x = tav.length;
+    var inv = $('.invitati')
+    for(var i=0;i<x;i++){
+        var d = $('<div/>');
+        d.text(tav[i]);
+        inv.append(d);
+    }
+    */
+
+    </script>
+
+</body>
+
+</html>
